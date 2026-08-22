@@ -1,441 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Village | Typixel Onam Fest 2026</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Sans+Malayalam:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/global.css">
-
+    <link rel="stylesheet" href="css/village.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
+<body class="bg-dark text-cream overflow-hidden">
 
-<body class="village-page">
-
-    <!-- ================================================= -->
-    <!-- MAP -->
-    <!-- ================================================= -->
-
-    <main id="map-container">
-
-        <div
-            id="village-world"
-            style="
-                width: 5000px;
-                height: 5000px;
-            "
-        >
-
-            <!-- Background -->
-
-            <div class="world-ground"></div>
-
-            <!-- Paddy fields -->
-
-            <div class="field field-1"></div>
-            <div class="field field-2"></div>
-            <div class="field field-3"></div>
-            <div class="field field-4"></div>
-
-            <!-- River -->
-
-            <div class="village-river"></div>
-
-            <!-- Roads -->
-
-            <div class="village-road road-horizontal"></div>
-            <div class="village-road road-horizontal road-2"></div>
-
-            <div class="village-road road-vertical"></div>
-            <div class="village-road road-vertical road-2"></div>
-
-            <!-- Village houses -->
-
-            <div class="house house-1">🏠</div>
-            <div class="house house-2">🏡</div>
-            <div class="house house-3">🏠</div>
-            <div class="house house-4">🏡</div>
-            <div class="house house-5">🏠</div>
-            <div class="house house-6">🏡</div>
-
-            <!-- Temple -->
-
-            <div
-                class="temple culture-object"
-                data-culture="temple"
-            >
-                <div class="temple-roof">🛕</div>
-                <span>Temple</span>
-            </div>
-
-
-            <!-- Culture objects -->
-
-            <div
-                class="culture-object culture-chenda"
-                data-culture="chenda"
-            >
-                🥁
-            </div>
-
-            <div
-                class="culture-object culture-kathakali"
-                data-culture="kathakali"
-            >
-                🎭
-            </div>
-
-            <div
-                class="culture-object culture-vallam"
-                data-culture="vallam"
-            >
-                🛶
-            </div>
-
-            <div
-                class="culture-object culture-sadya"
-                data-culture="sadya"
-            >
-                🍃
-            </div>
-
-            <div
-                class="culture-object culture-thiruvathira"
-                data-culture="thiruvathira"
-            >
-                💃
-            </div>
-
-            <div
-                class="culture-object culture-pulikali"
-                data-culture="pulikali"
-            >
-                🐯
-            </div>
-
-
-            <!-- ================================================= -->
-            <!-- MASSIVE POOKALAM SYSTEM -->
-            <!-- ================================================= -->
-
-            <div
-                id="pookalam-layer"
-                class="absolute inset-0 pointer-events-none"
-            ></div>
-
-
-            <!-- ================================================= -->
-            <!-- CENTRAL COMMUNITY POOKALAM -->
-            <!-- ================================================= -->
-
-            <div
-                id="community-pookalam"
-                class="community-pookalam"
-            >
-
-                <div class="community-rings">
-
-                    <div></div>
-                    <div></div>
-                    <div></div>
-
+    <!-- Village Map Engine -->
+    <div id="map-container">
+        <div id="village-world">
+            <!-- Background Terrain -->
+            <div class="terrain-paddy"></div>
+            <div class="terrain-river"></div>
+            <div class="terrain-road"></div>
+            
+            <!-- Community Pookalam Center -->
+            <div class="community-pookalam" style="left: 1800px; top: 1800px;">
+                <div class="community-progress">
+                    <h3>COMMUNITY POOKALAM</h3>
+                    <p>12,482 / 15,000 flowers</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 83%;"></div></div>
                 </div>
-
-                <div class="community-content">
-
-                    <span class="font-malayalam">
-                        സമൂഹ പൂക്കളം
-                    </span>
-
-                    <strong>
-                        COMMUNITY
-                        <br>
-                        POOKALAM
-                    </strong>
-
-                    <small>
-                        <b id="community-count">12,482</b>
-                        people joined
-                    </small>
-
-                </div>
-
             </div>
 
+            <!-- Cultural Locations -->
+            <div class="culture-object" data-culture="kathakali" style="left: 1200px; top: 1000px;">
+                <img src="assets/images/culture/kathakali.webp" alt="Kathakali performance" onerror="this.style.display='none'">
+                <div class="culture-label">
+                    <span class="malayalam">കഥകളി</span>
+                    <strong>Kathakali</strong>
+                </div>
+            </div>
+
+            <div class="culture-object" data-culture="pulikali" style="left: 2600px; top: 1200px;">
+                <img src="assets/images/culture/pulikali.webp" alt="Pulikali performance" onerror="this.style.display='none'">
+                <div class="culture-label">
+                    <span class="malayalam">പുലിക്കളി</span>
+                    <strong>Pulikali</strong>
+                </div>
+            </div>
+
+            <div class="culture-object" data-culture="vallamkali" style="left: 800px; top: 2200px;">
+                <img src="assets/images/vallam/snake-boat-race.webp" alt="Snake boat race" onerror="this.style.display='none'">
+                <div class="culture-label">
+                    <span class="malayalam">വള്ളംകളി</span>
+                    <strong>Vallamkali</strong>
+                </div>
+            </div>
+
+            <div class="culture-object" data-culture="sadya" style="left: 2400px; top: 2400px;">
+                <img src="assets/images/sadya/onam-sadya.webp" alt="Onam Sadya feast" onerror="this.style.display='none'">
+                <div class="culture-label">
+                    <span class="malayalam">ഓണസദ്യ</span>
+                    <strong>Onasadya</strong>
+                </div>
+            </div>
+
+            <!-- Pookalams Layer (Managed by JS) -->
+            <div id="pookalam-layer"></div>
         </div>
+    </div>
 
-    </main>
-
-
-    <!-- ================================================= -->
-    <!-- TOP BRAND BAR -->
-    <!-- ================================================= -->
-
-    <header class="village-header">
-
-        <a href="index.html" class="brand-chip">
-
-            <strong>TYPOXEL</strong>
-
-            <span>
-                ONAM FEST 2026
-            </span>
-
-        </a>
-
-        <div class="village-status">
-
-            <span class="status-dot"></span>
-
-            <span>
-                VILLAGE LIVE
-            </span>
-
-        </div>
-
-    </header>
-
-
-    <!-- ================================================= -->
-    <!-- DISCOVERY PANEL -->
-    <!-- ================================================= -->
-
-    <aside class="discovery-panel">
-
-        <div class="panel-label">
-            EXPLORE
-        </div>
-
-        <h2>
-            Kerala Culture
-        </h2>
-
-        <p>
-            Discover the traditions hidden around the village.
-        </p>
-
-        <div
-            id="discovery-list"
-            class="discovery-list"
-        ></div>
-
-    </aside>
-
-
-    <!-- ================================================= -->
-    <!-- LIVE FEED -->
-    <!-- ================================================= -->
-
-    <aside class="live-panel">
-
-        <div class="panel-label">
-            LIVE FROM THE VILLAGE
-        </div>
-
-        <div id="live-feed"></div>
-
-    </aside>
-
-
-    <!-- ================================================= -->
-    <!-- ZOOM CONTROLS -->
-    <!-- ================================================= -->
-
+    <!-- Map Controls -->
     <div class="map-controls">
-
-        <button id="zoom-in">
-            +
-        </button>
-
-        <div class="zoom-indicator">
-            <span id="zoom-value">20%</span>
-        </div>
-
-        <button id="zoom-out">
-            −
-        </button>
-
-        <button id="go-home">
-            ⌂
-        </button>
-
+        <button id="zoom-in" aria-label="Zoom In">+</button>
+        <button id="zoom-out" aria-label="Zoom Out">-</button>
+        <button id="reset-camera" aria-label="Reset Camera">⌂</button>
     </div>
 
-
-    <!-- ================================================= -->
-    <!-- BOTTOM NAV -->
-    <!-- ================================================= -->
-
-    <nav class="bottom-nav">
-
-        <a href="village.html" class="active">
-            <span>🌴</span>
-            <small>Village</small>
-        </a>
-
-        <a href="pookalam.html">
-            <span>🌼</span>
-            <small>Pookalam</small>
-        </a>
-
-        <button id="culture-nav">
-            <span>🎭</span>
-            <small>Culture</small>
-        </button>
-
-        <button>
-            <span>🏆</span>
-            <small>Rank</small>
-        </button>
-
-    </nav>
-
-
-    <!-- ================================================= -->
-    <!-- CULTURE IMAGE MODAL -->
-    <!-- ================================================= -->
-
-    <div
-        id="culture-modal"
-        class="culture-modal hidden"
-    >
-
-        <div
-            id="culture-modal-backdrop"
-            class="culture-modal-backdrop"
-        ></div>
-
-        <div class="culture-card">
-
-            <button
-                id="close-modal"
-                class="culture-close"
-            >
-                ×
-            </button>
-
-            <div
-                id="modal-image"
-                class="culture-image"
-            ></div>
-
-            <div class="culture-card-content">
-
-                <div class="culture-category">
-                    KERALA • ONAM
-                </div>
-
-                <h2
-                    id="modal-title"
-                >
-                </h2>
-
-                <p
-                    id="modal-desc"
-                >
-                </p>
-
-                <div class="culture-divider"></div>
-
-                <div class="culture-footer">
-
-                    <span>
-                        Discover another tradition
-                    </span>
-
-                    <button id="next-culture">
-                        NEXT →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <!-- Live Feed -->
+    <div class="live-feed">
+        <h3>LIVE FROM THE VILLAGE</h3>
+        <ul id="feed-list"></ul>
     </div>
 
-
-    <!-- ================================================= -->
-    <!-- POOKALAM PROFILE MODAL -->
-    <!-- ================================================= -->
-
-    <div
-        id="pookalam-modal"
-        class="culture-modal hidden"
-    >
-
-        <div
-            id="pookalam-modal-backdrop"
-            class="culture-modal-backdrop"
-        ></div>
-
-        <div class="pookalam-card">
-
-            <button
-                id="close-pookalam"
-                class="culture-close"
-            >
-                ×
-            </button>
-
-            <div
-                id="pookalam-preview"
-                class="pookalam-preview"
-            >
+    <!-- Culture Modal -->
+    <div id="culture-modal" class="modal-overlay hidden">
+        <div class="modal-content culture-modal-content">
+            <div class="modal-image-container">
+                <img id="modal-img" src="" alt="">
             </div>
-
-            <div class="pookalam-card-content">
-
-                <span class="culture-category">
-                    VILLAGE POOKALAM
-                </span>
-
-                <h2 id="pookalam-title">
-                </h2>
-
-                <p id="pookalam-user">
-                </p>
-
-                <div class="pookalam-stats">
-
-                    <span>
-                        ❤️ <b id="pookalam-likes"></b>
-                    </span>
-
-                    <span>
-                        ⭐ <b id="pookalam-points"></b>
-                    </span>
-
+            <div class="modal-info">
+                <span class="modal-category">KERALA CULTURE</span>
+                <h2 id="modal-title"></h2>
+                <p id="modal-malayalam"></p>
+                <p id="modal-desc"></p>
+                <div class="did-you-know">
+                    <strong>DID YOU KNOW?</strong>
+                    <p id="modal-fact"></p>
                 </div>
-
-                <button class="celebrate-button">
-                    CELEBRATE 🌼
-                </button>
-
+                <button class="btn-primary" id="close-modal">CLOSE</button>
             </div>
-
         </div>
-
     </div>
-
 
     <script src="js/data.js"></script>
     <script src="js/map-engine.js"></script>
     <script src="js/village.js"></script>
-
+    <script src="js/culture.js"></script>
 </body>
 </html>
