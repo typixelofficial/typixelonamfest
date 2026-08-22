@@ -1,89 +1,220 @@
-// Data & State Management Layer
-// Ready for Supabase migration. Currently uses localStorage.
+// ==========================================
+// TYPOXEL ONAM FEST 2026 DATA STORE
+// ==========================================
 
 const TypixelData = {
+
     user: null,
+
     village: {
         pookalams: [],
         discoveries: []
     },
-    
-    init() {
-        this.loadUser();
-        this.loadVillage();
-        // If no mock data exists, generate it
-        if (this.village.pookalams.length < 50) {
-            this.generateMockVillage();
-        }
-    },
 
-    // --- USER MANAGEMENT ---
-    loadUser() {
-        const stored = localStorage.getItem('typixel_user');
-        if (stored) this.user = JSON.parse(stored);
+    init() {
+        try {
+            const savedUser = localStorage.getItem("typixel_onam_user");
+            const savedVillage = localStorage.getItem("typixel_onam_village");
+
+            if (savedUser) {
+                this.user = JSON.parse(savedUser);
+            }
+
+            if (savedVillage) {
+                this.village = JSON.parse(savedVillage);
+            }
+
+            // Create demo Pookalams if none exist
+            if (!this.village.pookalams || this.village.pookalams.length === 0) {
+                this.createDemoPookalams();
+            }
+
+        } catch (error) {
+            console.error("TypixelData initialization error:", error);
+
+            this.user = null;
+
+            this.village = {
+                pookalams: [],
+                discoveries: []
+            };
+
+            this.createDemoPookalams();
+        }
     },
 
     saveUser(username) {
-        this.user = {
-            id: 'local-' + Date.now(),
-            username: username,
-            points: 0,
-            rank: Math.floor(Math.random() * 100) + 1
-        };
-        localStorage.setItem('typixel_user', JSON.stringify(this.user));
-    },
 
-    // --- VILLAGE & POOKALAM MANAGEMENT ---
-    loadVillage() {
-        const stored = localStorage.getItem('typixel_village');
-        if (stored) this.village = JSON.parse(stored);
+        this.user = {
+            username: username,
+            joinedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(
+            "typixel_onam_user",
+            JSON.stringify(this.user)
+        );
     },
 
     saveVillage() {
-        localStorage.setItem('typixel_village', JSON.stringify(this.village));
+
+        localStorage.setItem(
+            "typixel_onam_village",
+            JSON.stringify(this.village)
+        );
     },
 
     addPookalam(pookalam) {
+
         this.village.pookalams.push(pookalam);
+
         this.saveVillage();
     },
 
-    // --- MOCK DATA GENERATOR ---
-    generateMockVillage() {
-        const names = ["Riyas", "Fathima", "Nihal", "Rifad", "Shamil", "Afsal", "Anu", "Rahul"];
-        const titles = ["Onam Vibes", "Malabar Dreams", "Festive Joy", "Kerala Roots", "Floral Magic"];
-        const colors = ['#FF5733', '#33FF57', '#3357FF', '#F033FF', '#FF33A8', '#FFBF33'];
-        
-        // Generate 200 mock pookalams clustered around courtyards
-        for (let i = 0; i < 200; i++) {
-            const courtyardX = Math.floor(Math.random() * 8) * 400 + 200;
-            const courtyardY = Math.floor(Math.random() * 8) * 400 + 200;
-            
-            this.village.pookalams.push({
-                id: 'mock-' + i,
-                username: '@' + names[Math.floor(Math.random() * names.length)] + Math.floor(Math.random() * 99),
-                title: titles[Math.floor(Math.random() * titles.length)],
-                x: courtyardX + (Math.random() * 200 - 100),
-                y: courtyardY + (Math.random() * 200 - 100),
-                color: colors[Math.floor(Math.random() * colors.length)],
+    createDemoPookalams() {
+
+        const colors = [
+            "#FF9933",
+            "#FFD700",
+            "#FFCC33",
+            "#FF69B4",
+            "#E63946",
+            "#FFFFFF",
+            "#F4A261"
+        ];
+
+        const names = [
+            "Rifad",
+            "Fathima",
+            "Riyas",
+            "Nihal",
+            "Afsal",
+            "Shamil",
+            "Anjana",
+            "Vishnu",
+            "Muneer",
+            "Safa",
+            "Adil",
+            "Hiba"
+        ];
+
+        for (let i = 0; i < 600; i++) {
+
+            const pookalam = {
+
+                id: i,
+
+                x: 100 + Math.random() * 3800,
+
+                y: 100 + Math.random() * 3800,
+
+                username:
+                    names[i % names.length] +
+                    "_" +
+                    Math.floor(Math.random() * 99),
+
+                title:
+                    [
+                        "Kerala Blossoms",
+                        "Onam Vibes",
+                        "Golden Onam",
+                        "Malabar Flowers",
+                        "Thiruvonam",
+                        "Village Pookalam"
+                    ][i % 6],
+
+                color: colors[i % colors.length],
+
                 likes: Math.floor(Math.random() * 500),
-                points: Math.floor(Math.random() * 5000)
-            });
-        }
-        this.saveVillage();
-    },
 
-    // --- SUPABASE READY STUBS ---
-    // supabase.from('pookalams').select('*')
-    async fetchPookalams() {
-        return this.village.pookalams;
+                points: Math.floor(Math.random() * 3000)
+
+            };
+
+            this.village.pookalams.push(pookalam);
+        }
+
+        this.saveVillage();
     }
 };
 
-// Culture Data
+
+// ==========================================
+// KERALA CULTURE DATA
+// ==========================================
+
 const CultureData = {
-    chenda: { icon: "🥁", title: "Chenda", desc: "A traditional Kerala percussion instrument commonly heard during festivals and temple ceremonies." },
-    kathakali: { icon: "🎭", title: "Kathakali", desc: "A major form of classical Indian dance, distinguished by elaborate colorful makeup, face masks, and costumes." },
-    vallam: { icon: "🛶", title: "Vallam Kali", desc: "The traditional boat race of Kerala, featuring long snake boats (Chundan Vallams) rowed by teams of rowers." },
-    sadya: { icon: "🍃", title: "Onam Sadya", desc: "A grand feast of Kerala served on a banana leaf, featuring a variety of vegetarian dishes during Onam." }
+
+    kathakali: {
+
+        title: "Kathakali",
+
+        icon: "🎭",
+
+        image: "assets/culture/kathakali.jpg",
+
+        desc:
+            "Kerala's iconic classical dance-drama, known for its elaborate makeup, costumes, expressions and storytelling."
+    },
+
+    chenda: {
+
+        title: "Chenda Melam",
+
+        icon: "🥁",
+
+        image: "assets/culture/chenda.jpg",
+
+        desc:
+            "The powerful traditional percussion performance that brings Kerala festivals to life."
+    },
+
+    vallam: {
+
+        title: "Vallam Kali",
+
+        icon: "🛶",
+
+        image: "assets/culture/vallamkali.jpg",
+
+        desc:
+            "The famous Kerala snake boat race, where teams row together with incredible rhythm and energy."
+    },
+
+    sadya: {
+
+        title: "Onam Sadya",
+
+        icon: "🍃",
+
+        image: "assets/culture/onam-sadya.jpg",
+
+        desc:
+            "A traditional vegetarian feast served on banana leaves and one of the most beloved parts of Onam."
+    },
+
+    thiruvathira: {
+
+        title: "Thiruvathira",
+
+        icon: "💃",
+
+        image: "assets/culture/thiruvathira.jpg",
+
+        desc:
+            "A graceful traditional Kerala group dance performed during festive occasions."
+    },
+
+    pulikali: {
+
+        title: "Pulikali",
+
+        icon: "🐯",
+
+        image: "assets/culture/pulikali.jpg",
+
+        desc:
+            "A colourful folk performance where performers dress as tigers and dance to traditional percussion."
+    }
+
 };
