@@ -1,140 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("Typixel Onam Fest starting...");
-
-    // Initialize data
+document.addEventListener('DOMContentLoaded', () => {
     TypixelData.init();
 
-    const enterBtn =
-        document.getElementById("enter-festival-btn");
-
-    const cinematic =
-        document.getElementById("cinematic-container");
-
-    const usernameModal =
-        document.getElementById("username-modal");
-
-    const enterVillageBtn =
-        document.getElementById("enter-village-btn");
-
-    const usernameInput =
-        document.getElementById("username-input");
-
-
-    // ==========================================
-    // SHOW ENTER BUTTON
-    // ==========================================
-
+    const enterBtn = document.getElementById('enter-festival-btn');
     if (enterBtn) {
+        if (TypixelData.user) {
+            // Skip intro if already logged in
+            window.location.href = 'village.html';
+            return;
+        }
 
-        setTimeout(() => {
-
-            enterBtn.classList.remove("hidden");
-
-            enterBtn.style.opacity = "1";
-
-        }, 3000);
-
-
-        // ==========================================
-        // OPEN USERNAME MODAL
-        // ==========================================
-
-        enterBtn.addEventListener("click", () => {
-
-            cinematic.style.opacity = "0";
-
+        enterBtn.addEventListener('click', () => {
+            document.querySelector('.hero-container').style.opacity = '0';
+            document.querySelector('.hero-container').style.transition = 'opacity 1s';
             setTimeout(() => {
-
-                cinematic.style.display = "none";
-
-                usernameModal.classList.remove("hidden");
-
-                usernameModal.classList.add("flex");
-
-                usernameInput.focus();
-
-            }, 700);
-
+                document.querySelector('.hero-container').style.display = 'none';
+                document.getElementById('username-modal').classList.remove('hidden');
+            }, 1000);
         });
 
-    }
-
-
-    // ==========================================
-    // ENTER VILLAGE
-    // ==========================================
-
-    if (enterVillageBtn) {
-
-        enterVillageBtn.addEventListener("click", () => {
-
-            let username =
-                usernameInput.value
-                    .trim()
-                    .replace(/[^a-zA-Z0-9_]/g, "");
-
-
+        document.getElementById('enter-village-btn').addEventListener('click', () => {
+            const input = document.getElementById('username-input');
+            let username = input.value.trim().replace(/[^a-zA-Z0-9_]/g, '');
             if (username.length < 3) {
-
-                alert(
-                    "Please enter at least 3 characters."
-                );
-
+                alert("Username must be at least 3 characters.");
                 return;
             }
-
-
             TypixelData.saveUser(username);
-
-
-            // Go to actual village
-
-            window.location.href =
-                "village.html";
-
+            window.location.href = 'village.html';
         });
-
     }
 
-
-    // ==========================================
-    // ENTER KEY SUPPORT
-    // ==========================================
-
-    usernameInput?.addEventListener("keydown", (event) => {
-
-        if (event.key === "Enter") {
-
-            enterVillageBtn.click();
-
-        }
-
-    });
-
-
-    // ==========================================
-    // AUDIO BUTTON
-    // ==========================================
-
-    const audioToggle =
-        document.getElementById("audio-toggle");
-
-    audioToggle?.addEventListener("click", () => {
-
-        const icon =
-            document.getElementById("audio-icon");
-
-        if (icon.innerText === "🔇") {
-
-            icon.innerText = "🔊";
-
-        } else {
-
-            icon.innerText = "🔇";
-
-        }
-
-    });
-
+    // Header scroll effect
+    const header = document.querySelector('.site-header');
+    if(header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('solid');
+            else header.classList.remove('solid');
+        });
+    }
 });
