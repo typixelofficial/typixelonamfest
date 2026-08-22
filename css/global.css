@@ -1,1081 +1,117 @@
-/* =========================================================
-   TYPOXEL ONAM FEST 2026
-   GLOBAL DESIGN SYSTEM
-   ========================================================= */
-
 :root {
-    --deep-green: #123f32;
-    --deep-green-2: #0b2d24;
-    --village-green: #285c3d;
-
-    --traditional-red: #8b0000;
-    --deep-red: #650000;
-
-    --cream: #fdfbf7;
-    --cream-dark: #f2ead8;
-
-    --kasavu-gold: #d4af37;
-    --kasavu-light: #f0d879;
-
-    --paddy-light: #a4c639;
-    --paddy-green: #759b32;
-    --paddy-dark: #556b2f;
-
-    --river-blue: #4682b4;
-    --river-light: #78b8d1;
-
-    --dirt-road: #8b7355;
-    --house-wall: #d7bd8a;
-
-    --text-dark: #17231d;
-    --text-muted: #69736c;
-
-    --white-glass: rgba(255, 255, 255, 0.12);
-    --dark-glass: rgba(5, 25, 20, 0.55);
-
-    --shadow-soft:
-        0 10px 30px rgba(0, 0, 0, 0.12);
-
-    --shadow-heavy:
-        0 25px 70px rgba(0, 0, 0, 0.28);
-
-    --gold-glow:
-        0 0 25px rgba(212, 175, 55, 0.45);
+    --deep-green: #123B2A;
+    --forest-green: #1F5A3D;
+    --leaf-green: #4F7F35;
+    --paddy-green: #8BAE45;
+    --kasavu-gold: #D4AF37;
+    --warm-gold: #F0C75E;
+    --onam-orange: #E8752A;
+    --traditional-red: #9B2C2C;
+    --maroon: #651C1C;
+    --cream: #FFF8E8;
+    --sand: #E9D8B4;
+    --river-blue: #4E8FA3;
+    --dark: #0D2118;
 }
 
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', sans-serif;
-    color: var(--text-dark);
-    background: var(--cream);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-button,
-input {
-    font: inherit;
-}
-
-button {
-    border: 0;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-
-/* =========================================================
-   TYPOGRAPHY
-   ========================================================= */
-
-.font-display {
-    font-family: 'Playfair Display', serif;
-}
-
-.font-malayalam {
-    font-family: 'Noto Sans Malayalam', sans-serif;
-}
-
-.font-body {
-    font-family: 'Inter', sans-serif;
-}
-
-
-/* =========================================================
-   COLORS
-   ========================================================= */
-
-.bg-cream {
     background-color: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
 }
 
-.bg-deep-green {
-    background-color: var(--deep-green);
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+.malayalam, .modal-malayalam, .hero-malayalam { font-family: 'Noto Sans Malayalam', sans-serif; }
+
+/* Buttons */
+.btn-primary {
+    background: var(--cream);
+    color: var(--deep-green);
+    border: 2px solid var(--kasavu-gold);
+    padding: 12px 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
-.bg-traditional-red {
-    background-color: var(--traditional-red);
+.btn-secondary {
+    background: transparent;
+    color: var(--deep-green);
+    border: 2px solid var(--deep-green);
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
 }
+.btn-secondary:hover { background: var(--deep-green); color: var(--cream); }
 
-.bg-kasavu-gold {
-    background-color: var(--kasavu-gold);
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    transition: background 0.3s;
 }
-
-.bg-paddy-light {
-    background-color: var(--paddy-light);
-}
-
-.bg-paddy-dark {
-    background-color: var(--paddy-dark);
-}
-
-.bg-river-blue {
-    background-color: var(--river-blue);
-}
-
-.bg-dirt-road {
-    background-color: var(--dirt-road);
-}
-
-.text-cream {
+.site-header.solid { background: var(--cream); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.site-header .logo { font-family: 'Playfair Display'; font-weight: 900; font-size: 24px; color: var(--kasavu-gold); letter-spacing: 2px; }
+.site-header.solid .logo { color: var(--deep-green); }
+.main-nav a {
     color: var(--cream);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 600;
 }
+.site-header.solid .main-nav a { color: var(--deep-green); }
 
-.text-deep-green {
-    color: var(--deep-green);
-}
-
-.text-kasavu-gold {
-    color: var(--kasavu-gold);
-}
-
-.text-traditional-red {
-    color: var(--traditional-red);
-}
-
-.border-kasavu-gold {
-    border-color: var(--kasavu-gold);
-}
-
-
-/* =========================================================
-   CINEMATIC INTRO
-   ========================================================= */
-
-#cinematic-container {
-    overflow: hidden;
-    isolation: isolate;
-}
-
-#cinematic-container::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(255, 220, 130, 0.08),
-            transparent 35%
-        ),
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.05),
-            rgba(0, 0, 0, 0.35)
-        );
-
-    z-index: 5;
-}
-
-
-/* Clouds */
-
-.cloud-layer {
-    position: absolute;
-    inset: -8%;
-
-    background-image:
-        url('https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?auto=format&fit=crop&w=2400&q=85');
-
-    background-size: cover;
-    background-position: center;
-
-    opacity: 0.34;
-
-    filter:
-        saturate(0.75)
-        contrast(0.95);
-
-    animation:
-        cloudDrift 70s linear infinite alternate;
-}
-
-
-/* Kerala landscape */
-
-.landscape-layer {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent 35%,
-            rgba(18, 63, 50, 0.1) 50%,
-            rgba(18, 63, 50, 0.65) 82%,
-            var(--deep-green-2) 100%
-        );
-}
-
-
-/* House layer */
-
-.house-layer {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(18, 63, 50, 0.85),
-            transparent 55%
-        ),
-        url('https://images.unsplash.com/photo-1604608672516-f1b9b1d37076?auto=format&fit=crop&w=2400&q=85')
-        bottom center / cover no-repeat;
-
-    opacity: 0;
-
-    animation:
-        houseReveal 5s ease forwards 2s;
-
-    filter:
-        saturate(0.85)
-        contrast(1.05);
-}
-
-
-/* Pookalam intro layer */
-
-.pookalam-layer {
-    position: absolute;
-
-    left: 50%;
-    bottom: -100px;
-
-    width: 420px;
-    height: 420px;
-
-    transform: translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff4c7 0 8%,
-            #d4af37 8% 18%,
-            #ff9f1c 18% 31%,
-            #d62828 31% 43%,
-            #f72585 43% 55%,
-            #ffd166 55% 67%,
-            #fff 67% 73%,
-            transparent 73%
-        );
-
-    opacity: 0;
-
-    box-shadow:
-        0 0 100px rgba(212, 175, 55, 0.35);
-
-    animation:
-        pookalamReveal 3s ease forwards 3.5s;
-}
-
-
-/* =========================================================
-   INTRO CONTENT
-   ========================================================= */
-
-#intro-content {
-    position: relative;
-    z-index: 10;
-}
-
-#intro-content h1 {
-    line-height: 0.95;
-    text-shadow:
-        0 4px 25px rgba(0, 0, 0, 0.25);
-}
-
-#enter-festival-btn {
-    position: relative;
-    overflow: hidden;
-
-    box-shadow:
-        0 12px 30px rgba(212, 175, 55, 0.25);
-}
-
-#enter-festival-btn::before {
-    content: "";
-
-    position: absolute;
-    top: 0;
-    left: -120%;
-
-    width: 80%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.35),
-            transparent
-        );
-
-    transform: skewX(-20deg);
-
-    animation:
-        buttonShine 3.5s infinite;
-}
-
-#enter-festival-btn:hover {
-    box-shadow:
-        0 15px 45px rgba(212, 175, 55, 0.38);
-}
-
-
-/* =========================================================
-   USERNAME MODAL
-   ========================================================= */
-
-#username-modal {
-    backdrop-filter: blur(18px);
-}
-
-#username-modal > div {
-    position: relative;
-
-    box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.35);
-
-    animation:
-        modalEnter 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-#username-input {
-    color: var(--deep-green);
-}
-
-#username-input::placeholder {
-    color: #a4aaa5;
-}
-
-
-/* =========================================================
-   VILLAGE MAP
-   ========================================================= */
-
-#map-container {
+/* Modals */
+.modal-overlay {
     position: fixed;
     inset: 0;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            #759b32 0%,
-            #557d35 40%,
-            #285c3d 75%,
-            #123f32 100%
-        );
-
-    touch-action: none;
-
-    user-select: none;
-}
-
-
-/* World */
-
-#village-world {
-    position: absolute;
-
-    width: 4000px;
-    height: 4000px;
-
-    transform-origin: 0 0;
-
-    transition:
-        transform 0.08s linear;
-
-    will-change: transform;
-}
-
-
-/* =========================================================
-   VILLAGE BACKGROUND
-   ========================================================= */
-
-#village-world::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(255,255,255,0.08) 0 3px,
-            transparent 4px
-        ),
-        radial-gradient(
-            circle at 70% 60%,
-            rgba(255,255,255,0.05) 0 2px,
-            transparent 3px
-        );
-
-    background-size:
-        120px 120px,
-        180px 180px;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   RIVER
-   ========================================================= */
-
-#village-world .bg-river-blue {
-    box-shadow:
-        inset 0 20px 35px rgba(255,255,255,0.12),
-        inset 0 -20px 35px rgba(0,0,0,0.12);
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--river-blue),
-            var(--river-light),
-            var(--river-blue)
-        );
-
-    background-size: 300px 100%;
-
-    animation:
-        riverFlow 8s linear infinite;
-}
-
-
-/* =========================================================
-   ROADS
-   ========================================================= */
-
-.bg-dirt-road {
-    box-shadow:
-        inset 0 4px 10px rgba(255,255,255,0.08),
-        inset 0 -4px 10px rgba(0,0,0,0.12);
-}
-
-
-/* =========================================================
-   CULTURE OBJECTS
-   ========================================================= */
-
-.culture-object {
-    position: relative;
-
-    width: 110px;
-    height: 110px;
-
+    background: rgba(13, 33, 24, 0.85);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 4rem;
-
-    cursor: pointer;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,0.18),
-            rgba(255,255,255,0.04)
-        );
-
-    border:
-        2px solid rgba(212, 175, 55, 0.55);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.22),
-        inset 0 0 25px rgba(255,255,255,0.08);
-
-    backdrop-filter: blur(5px);
-
-    transition:
-        transform 0.35s cubic-bezier(.2,.8,.2,1),
-        box-shadow 0.35s;
-
-    pointer-events: auto;
-
-    filter:
-        drop-shadow(0 8px 12px rgba(0,0,0,0.25));
-}
-
-.culture-object::after {
-    content: "EXPLORE";
-
-    position: absolute;
-
-    bottom: -30px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-family: 'Inter', sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 0.18em;
-
-    color: white;
-
-    background: rgba(0,0,0,0.55);
-
-    padding: 5px 9px;
-
-    border-radius: 999px;
-
-    opacity: 0;
-
-    transition: opacity 0.25s;
-}
-
-.culture-object:hover {
-    transform:
-        translateY(-10px)
-        scale(1.12);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,0.35),
-        0 0 35px rgba(212,175,55,0.35);
-}
-
-.culture-object:hover::after {
+    z-index: 1000;
     opacity: 1;
+    transition: opacity 0.3s;
+}
+.modal-overlay.hidden { display: none; opacity: 0; }
+
+.modal-content {
+    background: var(--cream);
+    padding: 40px;
+    border-radius: 4px;
+    max-width: 90vw;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
-
-/* =========================================================
-   POOKALAM MARKERS
-   ========================================================= */
-
-.pookalam-marker {
-    position: absolute;
-
-    width: 40px;
-    height: 40px;
-
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    pointer-events: auto;
-
-    border:
-        3px solid rgba(255,255,255,0.9);
-
-    box-shadow:
-        0 4px 10px rgba(0,0,0,0.25);
-
-    transition:
-        transform 0.25s,
-        box-shadow 0.25s;
-
-    overflow: hidden;
+/* Username Card */
+.username-card { text-align: center; width: 450px; border: 2px solid var(--kasavu-gold); }
+.username-card .modal-title { font-size: 28px; color: var(--deep-green); margin-bottom: 8px; }
+.username-card .modal-malayalam { color: var(--traditional-red); font-size: 20px; margin-bottom: 24px; }
+.username-card .modal-subtitle { margin-bottom: 16px; color: var(--forest-green); }
+.username-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--sand);
+    border-bottom: 2px solid var(--deep-green);
+    margin-bottom: 24px;
+    font-size: 18px;
+    font-family: 'Inter';
 }
-
-.pookalam-marker::before {
-    content: "";
-
-    position: absolute;
-    inset: 15%;
-
-    border-radius: 50%;
-
-    border:
-        2px solid rgba(255,255,255,0.7);
-
-    pointer-events: none;
-}
-
-.pookalam-marker:hover {
-    transform:
-        scale(1.35);
-
-    z-index: 100;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.35),
-        0 0 20px rgba(255,193,7,0.45);
-}
-
-
-/* =========================================================
-   POOKALAM CLUSTERS
-   ========================================================= */
-
-.pookalam-cluster {
-    position: absolute;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(212,175,55,0.9),
-            rgba(139,0,0,0.65)
-        );
-
-    border:
-        3px solid rgba(255,245,200,0.9);
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: white;
-
-    font-weight: 700;
-
-    pointer-events: auto;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(212,175,55,0.45),
-        0 10px 25px rgba(0,0,0,0.25);
-
-    backdrop-filter: blur(5px);
-
-    transition:
-        transform 0.3s,
-        box-shadow 0.3s;
-}
-
-.pookalam-cluster:hover {
-    transform: scale(1.15);
-
-    box-shadow:
-        0 0 35px rgba(212,175,55,0.65),
-        0 15px 40px rgba(0,0,0,0.3);
-}
-
-
-/* =========================================================
-   CULTURE MODAL
-   ========================================================= */
-
-#culture-modal {
-    backdrop-filter: blur(18px);
-}
-
-#culture-modal > div {
-    position: relative;
-
-    border:
-        1px solid rgba(212,175,55,0.35);
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,0.45);
-
-    animation:
-        modalEnter 0.45s cubic-bezier(.2,.8,.2,1);
-}
-
-
-/* Culture image area */
-
-#modal-image {
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--deep-green),
-            var(--village-green)
-        );
-}
-
-#modal-image::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,0.45),
-            transparent
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   LIVE FEED
-   ========================================================= */
-
-#live-feed li {
-    padding: 8px 10px;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,0.05);
-
-    transition:
-        background 0.2s;
-}
-
-#live-feed li:hover {
-    background:
-        rgba(212,175,55,0.12);
-}
-
-
-/* =========================================================
-   DISCOVERY PANEL
-   ========================================================= */
-
-#discovery-list > div {
-    padding: 7px 8px;
-
-    border-radius: 8px;
-
-    transition:
-        background 0.2s,
-        transform 0.2s;
-}
-
-#discovery-list > div:hover {
-    background:
-        rgba(255,255,255,0.06);
-
-    transform:
-        translateX(4px);
-}
-
-
-/* =========================================================
-   MAP UI PANELS
-   ========================================================= */
-
-.fixed.bg-black\/40 {
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.22);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-}
-
-
-/* =========================================================
-   MAP BUTTONS
-   ========================================================= */
-
-#zoom-in,
-#zoom-out,
-#go-home {
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-}
-
-#zoom-in:hover,
-#zoom-out:hover,
-#go-home:hover {
-    transform: scale(1.08);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,0.2);
-}
-
-#zoom-in:active,
-#zoom-out:active,
-#go-home:active {
-    transform: scale(0.94);
-}
-
-
-/* =========================================================
-   POOKALAM CREATOR
-   ========================================================= */
-
-#pookalam-canvas {
-    background:
-        radial-gradient(
-            circle,
-            #fffdf5,
-            #f4ead3
-        );
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.08),
-        inset 0 0 30px rgba(212,175,55,0.08);
-}
-
-
-/* Flower palette */
-
-#color-palette button {
-    position: relative;
-
-    border:
-        2px solid rgba(0,0,0,0.08);
-
-    transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-}
-
-#color-palette button:hover {
-    transform:
-        scale(1.12);
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,0.15);
-}
-
-
-/* =========================================================
-   PUBLISH OVERLAY
-   ========================================================= */
-
-#publish-overlay {
-    backdrop-filter: blur(15px);
-}
-
-#publish-overlay .text-9xl {
-    filter:
-        drop-shadow(0 0 25px rgba(212,175,55,0.5));
-}
-
-
-/* =========================================================
-   SCROLLBARS
-   ========================================================= */
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--cream-dark);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--deep-green);
-    border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--traditional-red);
-}
-
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes cloudDrift {
-    0% {
-        transform: scale(1.05) translateX(0);
-    }
-
-    100% {
-        transform: scale(1.12) translateX(-100px);
-    }
-}
-
-
-@keyframes houseReveal {
-    0% {
-        opacity: 0;
-        transform: scale(1.08);
-    }
-
-    100% {
-        opacity: 0.55;
-        transform: scale(1);
-    }
-}
-
-
-@keyframes pookalamReveal {
-    0% {
-        opacity: 0;
-        transform:
-            translateX(-50%)
-            translateY(100px)
-            scale(0.7)
-            rotate(-20deg);
-    }
-
-    100% {
-        opacity: 0.9;
-        transform:
-            translateX(-50%)
-            translateY(0)
-            scale(1)
-            rotate(0deg);
-    }
-}
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes modalEnter {
-    from {
-        opacity: 0;
-        transform:
-            translateY(25px)
-            scale(0.94);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-@keyframes buttonShine {
-    0% {
-        left: -120%;
-    }
-
-    35%,
-    100% {
-        left: 140%;
-    }
-}
-
-
-@keyframes riverFlow {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 300px 0;
-    }
-}
-
-
-/* =========================================================
-   UTILITY ANIMATIONS
-   ========================================================= */
-
-.animate-float {
-    animation:
-        floatElement 4s ease-in-out infinite;
-}
-
-@keyframes floatElement {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    #intro-content h1 {
-        font-size: clamp(
-            2.6rem,
-            12vw,
-            5rem
-        );
-    }
-
-    #intro-content p {
-        max-width: 90vw;
-    }
-
-    .pookalam-layer {
-        width: 280px;
-        height: 280px;
-    }
-
-    .culture-object {
-        width: 85px;
-        height: 85px;
-        font-size: 3rem;
-    }
-
-    #modal-image {
-        height: 220px;
-    }
-
-    #culture-modal > div {
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-
-    #zoom-in,
-    #zoom-out,
-    #go-home {
-        width: 44px;
-        height: 44px;
-    }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-    }
-}
+.username-card input:focus { outline: none; border-bottom-color: var(--kasavu-gold); }
