@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typixel Onam Fest 2026 | Build the Village Together</title>
+    <meta name="description" content="Create your Pookalam, explore Kerala culture, join Onam games and become part of a shared digital Kerala village.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Typixel Onam Fest 2026">
+    <meta property="og:description" content="A digital Onam village built by everyone.">
+    <meta property="og:type" content="website">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Sans+Malayalam:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body class="bg-cream overflow-hidden">
+
+    <!-- Cinematic Intro Container -->
+    <div id="cinematic-container" class="fixed inset-0 z-50 bg-deep-green text-cream flex flex-col items-center justify-center transition-opacity duration-1000">
+        <!-- Camera Layers (Simulated with CSS) -->
+        <div class="absolute inset-0 cloud-layer"></div>
+        <div class="absolute inset-0 landscape-layer"></div>
+        <div class="absolute inset-0 house-layer"></div>
+        <div class="absolute inset-0 pookalam-layer"></div>
+        
+        <div class="z-10 text-center px-4 flex flex-col items-center" id="intro-content">
+            <p class="font-malayalam text-2xl text-kasavu-gold mb-4 opacity-0" style="animation: fadeIn 2s ease forwards 1s;">ഈ ഓണം നമ്മൾ ഒരുമിച്ച് പണിയാം</p>
+            <h1 class="font-display text-6xl md:text-8xl font-black tracking-tight mb-4 opacity-0" style="animation: fadeIn 2s ease forwards 2.5s;">TYPOXEL ONAM FEST 2026</h1>
+            <p class="font-body text-xl mb-12 opacity-0" style="animation: fadeIn 2s ease forwards 3.5s;">A digital Onam village built by everyone.</p>
+            
+            <button id="enter-festival-btn" class="hidden bg-kasavu-gold text-deep-green px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-2xl">
+                ENTER THE FESTIVAL
+            </button>
+        </div>
+        
+        <!-- Audio Toggle -->
+        <button id="audio-toggle" class="absolute top-6 right-6 z-20 bg-black/20 p-3 rounded-full">
+            <span id="audio-icon">🔇</span>
+        </button>
+    </div>
+
+    <!-- Username Entry Modal -->
+    <div id="username-modal" class="fixed inset-0 z-40 bg-black/80 hidden items-center justify-center backdrop-blur-md">
+        <div class="bg-cream text-deep-green p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 border-4 border-kasavu-gold">
+            <h2 class="font-display text-3xl font-bold mb-2 text-center">What should we call you?</h2>
+            <p class="text-center text-gray-600 mb-6 font-body">Choose your festival name.</p>
+            
+            <div class="flex items-center border-b-2 border-deep-green py-2 mb-6">
+                <span class="text-2xl text-traditional-red mr-2">@</span>
+                <input type="text" id="username-input" placeholder="YourName" maxlength="15" class="bg-transparent border-none w-full text-2xl focus:outline-none font-body">
+            </div>
+            
+            <button id="enter-village-btn" class="w-full bg-traditional-red text-cream py-4 rounded-xl font-bold text-lg hover:bg-deep-red transition-colors">
+                ENTER VILLAGE →
+            </button>
+            <p class="text-center mt-6 text-xs text-gray-500">A festival experience by Typixel</p>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
