@@ -1,0 +1,96 @@
+:root {
+    --deep-green: #1b4d3e;
+    --traditional-red: #8b0000;
+    --cream: #fdfbf7;
+    --kasavu-gold: #d4af37;
+    --paddy-light: #a4c639;
+    --paddy-dark: #556b2f;
+    --river-blue: #4682b4;
+    --dirt-road: #8b7355;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.font-display { font-family: 'Playfair Display', serif; }
+.font-malayalam { font-family: 'Noto Sans Malayalam', sans-serif; }
+.font-body { font-family: 'Inter', sans-serif; }
+
+.bg-cream { background-color: var(--cream); }
+.bg-deep-green { background-color: var(--deep-green); }
+.bg-traditional-red { background-color: var(--traditional-red); }
+.bg-kasavu-gold { background-color: var(--kasavu-gold); }
+.text-cream { color: var(--cream); }
+.text-deep-green { color: var(--deep-green); }
+.text-kasavu-gold { color: var(--kasavu-gold); }
+.text-traditional-red { color: var(--traditional-red); }
+.bg-paddy-light { background-color: var(--paddy-light); }
+.bg-paddy-dark { background-color: var(--paddy-dark); }
+.bg-river-blue { background-color: var(--river-blue); }
+.bg-dirt-road { background-color: var(--dirt-road); }
+.border-kasavu-gold { border-color: var(--kasavu-gold); }
+
+/* Cinematic Layers */
+.cloud-layer { background: url('https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; opacity: 0.4; animation: drift 60s linear infinite; }
+.landscape-layer { background: linear-gradient(to bottom, transparent 60%, var(--paddy-dark)); }
+.house-layer { background: url('https://images.unsplash.com/photo-1604608672516-f1b9b1d37076?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') bottom center/cover; opacity: 0; animation: zoomIn 4s ease forwards 2s; }
+
+@keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Map Engine specific */
+#village-world {
+    transition: transform 0.1s ease-out; /* Smooths slight drag glitches */
+    will-change: transform;
+}
+
+.culture-object {
+    font-size: 4rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    pointer-events: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+.culture-object:hover {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+/* LOD Pookalam markers */
+.pookalam-marker {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+.pookalam-marker:hover {
+    transform: scale(1.2);
+    z-index: 100;
+}
+
+.pookalam-cluster {
+    position: absolute;
+    background: rgba(212, 175, 55, 0.6);
+    border: 2px solid var(--kasavu-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
